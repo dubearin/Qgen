@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html lang="en" oncontextmenu="return false;">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<title>Question Paper Generator</title>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com">
+</script>
+
+<link href="style.css" rel="stylesheet"/></head>
+<body>
+<div id="app-container">
+<!-- Home Page Content -->
+<!-- This entire div represents the 'home' page view -->
+<div id="home-page">
+<nav class="navbar">
+<div class="navbar-logo">📝 QGen</div>
+
+<div class="navbar-links">
+<a href="#" onclick="showHomePageContent('default-home')">Home</a>
+<a href="#" onclick="showHomePageContent('tutorials')">Tutorials</a>
+<a href="#" onclick="showHomePageContent('updates')">Updates</a>
+</div>
+<!-- Login button or username display -->
+<button class="navbar-login-btn" id="navbarLoginBtn" onclick="showLoginModal()">Login</button>
+<span class="navbar-username-display hidden" id="navbarUsernameDisplay"></span>
+</nav>
+<section class="hero-section" id="hero-section">
+<h1 class="hero-title">Create Question Papers Online</h1>
+<p class="hero-subtitle">
+                    QGen helps schools, coaching institutes, teachers and tutors create question papers and online tests in minutes.
+                </p>
+<button class="start-button" id="heroStartButton" onclick="showLoginModal()">Start Generating Now</button>
+</section>
+<img alt="App Preview" class="app-preview-image" id="app-preview-image" src="https://placehold.co/800x500/edf2f7/4a5568?text=Your+App+Preview"/>
+<section class="three-steps-section" id="three-steps-section">
+<h2 class="section-title">Three Simple Steps</h2>
+<p class="section-subtitle">Follow these steps to create your papers.</p>
+<div class="steps-grid">
+<div class="step-item">
+<div class="step-number">1</div>
+<h3 class="step-title">Select Branch &amp; Subject</h3>
+<p class="step-description">Choose the branch and subject for which you want to create the paper. We have question banks for various courses.</p>
+</div>
+<div class="step-item">
+<div class="step-number">2</div>
+<h3 class="step-title">Choose Questions</h3>
+<p class="step-description">Choose number of questions as per the blueprint you have or customize our preloaded blueprints.</p>
+</div>
+<div class="step-item">
+<div class="step-number">3</div>
+<h3 class="step-title">Preview &amp; Download Paper</h3>
+<p class="step-description">Preview your question paper, make necessary changes and download it as PDF or Word file.</p>
+</div>
+</div>
+<div class="step-buttons">
+<button class="get-started-button" id="homeGetStartedButton" onclick="showLoginModal()">Get Started</button>
+</div>
+</section>
+<!-- Detailed Tutorials Section -->
+<section class="tutorials-section hidden" id="tutorials-section">
+<h2 class="section-title">How to Use QGen: A Step-by-Step Guide</h2>
+<p class="section-subtitle">Master the art of question paper generation with these easy steps.</p>
+<div class="tutorials-content">
+<h3>1. Log In to Your Account</h3>
+<p>Access the QGen platform by logging in with your registered username and password. If you don't have an account, please contact support for registration.</p>
+<h3>2. Navigate to the Generator</h3>
+<p>After successful login, you will be directed to the Question Paper Generator interface. If you are on the home page, simply click "Go to Generator" from the hero section or use the corresponding button in the navbar (if logged in).</p>
+<h3>3. Enter General Exam Details</h3>
+<p>Fill in the required information for your examination:</p>
+<ol>
+<li><strong>Institution Name:</strong> Enter the full name of your school, college, or institute.</li>
+<li><strong>Exam Name:</strong> Specify the name of the exam (e.g., "Mid-Term Exam," "Final Assessment," "Unit Test 3").</li>
+<li><strong>Exam Date:</strong> Select a future date for the examination using the date picker.</li>
+<li><strong>Exam Time:</strong> Set the scheduled time for the examination.</li>
+</ol>
+<h3>4. Choose Your Question Bank Type</h3>
+<p>QGen offers two types of question banks:</p>
+<ul>
+<li><strong>Predefined:</strong> Select this option to use our extensive library of questions.
+                            <ol>
+<li>Choose your **Branch** (e.g., "Computer Science Engineering," "1st Year").</li>
+<li>Select the relevant **Subject** from the dropdown list that appears after branch selection.</li>
+</ol>
+</li>
+<li><strong>Custom:</strong> Select this option if you wish to use your own set of questions.
+                            <ol>
+<li>Enter a **Custom Subject Name** for your paper.</li>
+<li>**Paste Your Custom Questions:** Type or paste your questions directly into the text area. Ensure each question is on a new line.</li>
+<li>**Upload a Plain Text (.txt) File:** Alternatively, you can upload a `.txt` file containing your questions, with each question on a new line.</li>
+<li>Click the "Load Custom Questions" button to process your input.</li>
+</ol>
+</li>
+</ul>
+<h3>5. Select Total Marks</h3>
+<p>Indicate the total marks for the paper by choosing either "20 Marks" or "80 Marks". The system will automatically adjust the number and type of questions accordingly.</p>
+<h3>6. Generate and Preview</h3>
+<p>Once all details are filled and questions are loaded (either predefined or custom), click the "Generate Question Paper" button. The system will process your request and open a new window with the generated question paper in a printable format.</p>
+<h3>7. Print or Download</h3>
+<p>In the new window, you will see buttons to "Print" the paper directly or "Back to Generator" to close the window and return to the main application.</p>
+<h3>8. Return to Home</h3>
+<p>From the generator page, you can click the "Back to Home" button to return to the main QGen homepage.</p>
+</div>
+</section>
+<!-- Detailed Updates Section -->
+<section class="updates-section hidden" id="updates-section">
+<h2 class="section-title">Latest Product Updates &amp; Features</h2>
+<p class="section-subtitle">Stay informed about new enhancements and additions to QGen.</p>
+<div class="updates-content-section">
+<h3>Version 1.2.0 - June 14, 2025</h3>
+<ul>
+<li>✨ **Improved Navigation:** Added a "Back to Home" button on the generator page for easier navigation.</li>
+<li>📝 **Enhanced Tutorial Content:** Detailed step-by-step guide added to the Tutorials section for new users.</li>
+<li>🚀 **Performance Optimizations:** Minor speed improvements in question fetching and paper generation.</li>
+</ul>
+<h3>Version 1.1.0 - May 20, 2025</h3>
+<ul>
+<li>📚 **Expanded Question Banks:** Added more questions for Physics and Chemistry subjects in 1st Year Engineering.</li>
+<li>📅 **Date Validation:** Implemented stricter date validation to ensure only future dates can be selected for exams.</li>
+<li>🐛 **Bug Fixes:** Resolved an issue where custom questions were not clearing correctly when switching back to predefined.</li>
+</ul>
+<h3>Version 1.0.0 - April 1, 2025 (Initial Release)</h3>
+<ul>
+<li>🎉 **Welcome to QGen!** Initial launch with basic question paper generation for 20 and 80 marks.</li>
+<li>✍️ **Custom Question Upload:** Ability to paste or upload custom questions via text file.</li>
+<li>🏫 **Predefined Subjects:** Initial set of predefined question banks for various engineering branches.</li>
+</ul>
+</div>
+</section>
+</div>
+<!-- Question Paper Generator Form Content -->
+<!-- This entire div represents the 'generator' page view -->
+<div class="container-box hidden" id="generator-page">
+<h1 class="h1-title">Generate QuestionPaper</h1>
+<div class="input-group">
+<label class="label" for="institution">Enter Your Institution Name:</label>
+<input class="text-input" id="institution" placeholder="e.g., University of Engineering" type="text"/>
+</div>
+<div class="input-group">
+<label class="label" for="exname">Enter Exam name:</label>
+<input class="text-input" id="exname" placeholder="e.g., Internal Assessment 1" type="text"/>
+</div>
+<div class="input-group">
+<label class="label" for="date">Exam Date:</label>
+<div class="date-time-input-container">
+<input class="date-time-input" id="date" type="date"/>
+<span class="input-icon">📅</span>
+</div>
+<div class="form-message hidden" id="dateErrorMessage"></div>
+</div>
+<div class="input-group">
+<label class="label" for="time">Exam Time:</label>
+<div class="date-time-input-container">
+<input class="date-time-input" id="time" type="time"/>
+<span class="input-icon">🕒</span>
+</div>
+</div>
+<div class="input-group">
+<label class="label">Question Bank Type:</label>
+<div class="radio-group">
+<label class="radio-option">
+<input checked="" id="predefinedBank" name="bankType" type="radio" value="predefined"/>
+                        Predefined
+                    </label>
+<label class="radio-option">
+<input id="customBank" name="bankType" type="radio" value="custom"/>
+                        Custom
+                    </label>
+</div>
+</div>
+<div class="input-group hidden" id="customQuestionBankGroup">
+<div class="input-group">
+<label class="label" for="customSubjectNameInput">Enter Custom Subject Name:</label>
+<input class="text-input" id="customSubjectNameInput" placeholder="e.g., Data Structures &amp; Algorithms" type="text"/>
+</div>
+<label class="label" for="customQuestionsInput">Or Paste Your Custom Questions Here (Plain Text):</label>
+<textarea class="textarea-input mb-4" id="customQuestionsInput" placeholder="Enter each question on a new line."></textarea>
+<label class="label mt-4" for="questionFileInput">Or Upload a Plain Text (.txt) File:</label>
+<input accept=".txt" class="w-full" id="questionFileInput" type="file"/>
+<button class="load-questions-button" id="loadCustomQuestionsBtn">Load Custom Questions</button>
+<div class="form-message mt-2 hidden" id="customBankMessage"></div>
+</div>
+<div class="input-group" id="subjectSelectionGroup">
+<div class="select-container">
+<div>
+<label class="label" for="branchSelect">Select Branch:</label>
+<select class="select-input" id="branchSelect">
+<option value="">--Select a Branch--</option>
+<option value="1st Year">1st Year</option>
+<option value="Computer Science Engineering">Computer Science Engineering</option>
+<option value="Information Technology (IT)">Information Technology (IT)</option>
+<option value="Electronics and Communication Engineering (ECE)">Electronics and Communication Engineering (ECE)</option>
+<option value="Electrical Engineering (EE)">Electrical Engineering (EE)</option>
+<option value="Mechanical Engineering">Mechanical Engineering</option>
+<option value="Civil Engineering">Civil Engineering</option>
+<option value="Artificial Intelligence &amp; Data Science">Artificial Intelligence &amp; Data Science</option>
+<option value="Electronics and Instrumentation Engineering">Electronics and Instrumentation Engineering</option>
+<option value="Automobile Engineering">Automobile Engineering</option>
+<option value="Aerospace Engineering">Aerospace Engineering</option>
+</select>
+</div>
+<div>
+<label class="label" for="subjectSelect">Select Subject:</label>
+<select class="select-input" id="subjectSelect">
+<option value="">--Select a Subject--</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Radio buttons for 20 and 80 marks - only these two now -->
+<div class="input-group">
+<label class="label">Total Marks:</label>
+<div class="radio-group">
+<label class="radio-option">
+<input checked="" name="totalMarks" type="radio" value="20"/>
+                        20 Marks
+                    </label>
+<label class="radio-option">
+<input name="totalMarks" type="radio" value="80"/>
+                        80 Marks
+                    </label>
+</div>
+</div>
+<div class="form-message hidden" id="formMessage"></div>
+<button class="generate-button" onclick="generateQuestionPaper()">Generate Question Paper</button>
+<button class="back-to-home-button" onclick="showPage('home-page')">Back to Home</button>
+</div>
+<!-- Loading Overlay (positioned relative to #app-container) -->
+<div class="loading-overlay hidden" id="loadingOverlay">
+<div class="loading-content">
+<div class="spinner"></div>
+<div class="progress-bar-container">
+<div class="progress-bar-fill" id="progressBar"></div>
+</div>
+<p class="loading-message" id="loadingMessage"></p>
+</div>
+</div>
+<!-- Login Modal -->
+<div class="login-modal-overlay hidden" id="loginModal">
+<div class="login-modal-content">
+<button class="login-modal-close" onclick="hideLoginModal()">×</button>
+<h2 class="login-modal-title">Login to QGen</h2>
+<div class="login-modal-input-group">
+<label class="label" for="username">Username:</label>
+<input class="login-modal-input" id="username" placeholder="Enter your username" type="text"/>
+</div>
+<div class="login-modal-input-group">
+<label class="label" for="password">Password:</label>
+<input class="login-modal-input" id="password" placeholder="Enter your password" type="password"/>
+<a class="forgot-password-link" href="#" onclick="showForgotPasswordModal()">Forgot Password?</a>
+</div>
+<p class="login-modal-message hidden" id="loginMessage"></p>
+<button class="login-button" id="modalLoginBtn" onclick="handleLogin()">Login</button>
+<div class="mt-6 text-center text-gray-600 text-sm">
+                    Don't have an account?
+                    <a class="text-indigo-600 hover:underline font-medium" href="#" onclick="showCreateAccountModal()">Create Account</a>
+</div>
+</div>
+</div>
+<!-- Create Account Modal -->
+<div class="login-modal-overlay hidden" id="createAccountModal">
+<div class="login-modal-content">
+<button class="login-modal-close" onclick="hideCreateAccountModal()">×</button>
+<h2 class="login-modal-title">Create Account</h2>
+<p class="info-message">
+                    Account creation is restricted. If you need a new user account, please contact our authorized support team.
+                </p>
+<a class="whatsapp-link" href="https://wa.me" id="createAccountWhatsappLink" target="_blank">
+<svg class="inline-block align-middle" height="24" viewbox="0 0 24 24" width="24">
+<path d="M12.04 2C7.05 2 3.01 6.03 3.01 11.02 3.01 13.06 3.69 14.93 4.85 16.49L3.08 21.05L7.84 19.6C9.28 20.54 10.99 21.04 12.04 21.04C17.03 21.04 21.07 17.01 21.07 12.02C21.07 7.03 17.03 2 12.04 2ZM16.6 15.58C16.32 16.19 15.13 16.89 14.54 17.06C13.96 17.23 13.34 17.22 12.83 17.06C12.33 16.89 11.66 16.19 9.53 15.22C7.8 14.47 6.64 12.94 6.57 12.82C6.49 12.7 6.42 12.59 6.42 12.48C6.42 12.36 6.7 12.18 7.02 11.95C7.29 11.72 7.57 11.45 7.69 11.33C7.8 11.22 7.89 11.16 8 10.9C8.11 10.63 8.16 10.37 8.22 10.09C8.32 9.8 8.08 9.57 7.97 9.47C7.87 9.37 7.60 8.73 7.48 8.48C7.36 8.23 7.24 8.28 7.14 8.28C7.05 8.28 6.89 8.24 6.73 8.24C6.56 8.24 6.36 8.29 6.16 8.5C5.97 8.71 5.48 9.17 5.48 10.1C5.48 11.03 6.17 11.93 6.27 12.04C6.37 12.15 7.68 14.28 9.69 15.14C11.69 16 11.94 15.86 12.71 15.93C13.57 16.01 15.02 15.54 15.34 15.36C15.66 15.18 16.27 14.82 16.39 14.5C16.51 14.19 16.51 13.91 16.42 13.75C16.34 13.59 16.14 13.52 15.94 13.43C15.74 13.34 14.62 12.82 14.31 12.7C14 12.59 14.07 12.44 14.17 12.32C14.27 12.21 14.41 12.02 14.65 11.75C14.89 11.48 15.22 11.23 15.48 11.16C15.74 11.09 15.91 11.09 16.04 11.22C16.17 11.35 16.48 11.83 16.59 12.07C16.7 12.31 16.7 12.56 16.6 12.69C16.49 12.82 16.6 13.04 16.6 13.08C16.6 13.12 16.6 13.25 16.6 13.43C16.6 13.61 16.6 13.78 16.6 13.91C16.51 14.04 16.6 14.96 16.6 15.15C16.6 15.34 16.6 15.47 16.6 15.58Z"></path>
+</svg>
+                    Contact Team QGen
+                </a>
+<p class="whatsapp-phone-number">+91 8999848695</p>
+</div>
+</div>
+<!-- Forgot Password Modal -->
+<div class="login-modal-overlay hidden" id="forgotPasswordModal">
+<div class="login-modal-content">
+<button class="login-modal-close" onclick="hideForgotPasswordModal()">×</button>
+<h2 class="login-modal-title">Forgot Password?</h2>
+<p class="info-message">
+                    Password reset functionality is not available. Please contact our authorized support team with your username for assistance.
+                </p>
+<div class="login-modal-input-group">
+<label class="label" for="forgotPasswordUsername">Your Username:</label>
+<input class="login-modal-input" id="forgotPasswordUsername" placeholder="Enter your username (optional)" type="text"/>
+</div>
+<a class="whatsapp-link" href="#" id="forgotPasswordWhatsappLink" target="_blank">
+<svg class="inline-block align-middle" height="24" viewbox="0 0 24 24" width="24">
+<path d="M12.04 2C7.05 2 3.01 6.03 3.01 11.02 3.01 13.06 3.69 14.93 4.85 16.49L3.08 21.05L7.84 19.6C9.28 20.54 10.99 21.04 12.04 21.04C17.03 21.04 21.07 17.01 21.07 12.02C21.07 7.03 17.03 2 12.04 2ZM16.6 15.58C16.32 16.19 15.13 16.89 14.54 17.06C13.96 17.23 13.34 17.22 12.83 17.06C12.33 16.89 11.66 16.19 9.53 15.22C7.8 14.47 6.64 12.94 6.57 12.82C6.49 12.7 6.42 12.59 6.42 12.48C6.42 12.36 6.7 12.18 7.02 11.95C7.29 11.72 7.57 11.45 7.69 11.33C7.8 11.22 7.89 11.16 8 10.9C8.11 10.63 8.16 10.37 8.22 10.09C8.32 9.8 8.08 9.57 7.97 9.47C7.87 9.37 7.60 8.73 7.48 8.48C7.36 8.23 7.24 8.28 7.14 8.28C7.05 8.28 6.89 8.24 6.73 8.24C6.56 8.24 6.36 8.29 6.16 8.5C5.97 8.71 5.48 9.17 5.48 10.1C5.48 11.03 6.17 11.93 6.27 12.04C6.37 12.15 7.68 14.28 9.69 15.14C11.69 16 11.94 15.86 12.71 15.93C13.57 16.01 15.02 15.54 15.34 15.36C15.66 15.18 16.27 14.82 16.39 14.5C16.51 14.19 16.51 13.91 16.42 13.75C16.34 13.59 16.14 13.52 15.94 13.43C15.74 13.34 14.62 12.82 14.31 12.7C14 12.59 14.07 12.44 14.17 12.32C14.27 12.21 14.41 12.02 14.65 11.75C14.89 11.48 15.22 11.23 15.48 11.16C15.74 11.09 15.91 11.09 16.04 11.22C16.17 11.35 16.48 11.83 16.59 12.07C16.7 12.31 16.7 12.56 16.6 12.69C16.49 12.82 16.6 13.04 16.6 13.08C16.6 13.12 16.6 13.25 16.6 13.43C16.6 13.61 16.6 13.78 16.6 13.91C16.51 14.04 16.6 14.96 16.6 15.15C16.6 15.34 16.6 15.47 16.6 15.58Z"></path>
+</svg>
+                    Contact Team QGen
+                </a>
+<p class="whatsapp-phone-number">+91 8999848695</p>
+</div>
+</div>
+</div>
+
+<script src="script.js"></script></body>
+</html>

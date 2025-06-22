@@ -1,0 +1,807 @@
+
+        /* Custom font import for Inter */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        /* Base styles using Inter font and light background */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Lighter background for a professional feel */
+            display: flex;
+            justify-content: center;
+            align-items: center; /* Center vertically in addition to horizontally */
+            min-height: 100vh;
+            padding: 2rem 1rem; /* Consistent padding */
+            box-sizing: border-box; /* Include padding in element's total width and height */
+        }
+
+
+        /* Overall application container for page switching */
+        #app-container {
+            width: 100%;
+            max-width: 1200px; /* Increased max-width for the overall app */
+            min-height: 80vh;
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            overflow: hidden; /* Important for clean page transitions if implemented */
+            position: relative; /* For loading overlay */
+        }
+
+        /* Shared container box styling for generator form */
+        .container-box {
+            padding: 2.5rem; /* Generous padding */
+            width: 100%;
+            max-width: 900px; /* Increased max-width for generator form */
+            margin: 0 auto; /* Center the form within its container */
+            box-sizing: border-box;
+        }
+
+        /* Heading styling */
+        .h1-title {
+            font-size: 2.5rem; /* Larger heading */
+            font-weight: 700; /* Extra bold */
+            color: #1a202c; /* Darker text for heading */
+            text-align: center;
+            margin-bottom: 2.5rem; /* More space below heading */
+        }
+
+        /* Input group spacing */
+        .input-group {
+            margin-bottom: 1.75rem; /* Increased spacing between form groups */
+        }
+
+        /* Label styling */
+        .label {
+            display: block;
+            font-size: 0.95rem; /* Slightly larger label font */
+            font-weight: 600; /* Semi-bold */
+            color: #2d3748; /* Darker grey for labels */
+            margin-bottom: 0.75rem; /* More space below label */
+            text-align: left; /* Align labels left */
+        }
+
+        /* General input, select, textarea styling */
+        .text-input, .select-input, .textarea-input {
+            width: 100%;
+            padding: 0.9rem 1.25rem; /* Increased padding inside inputs */
+            border: 1px solid #cbd5e0; /* Light grey border */
+            border-radius: 0.65rem; /* Slightly more rounded */
+            font-size: 1rem;
+            color: #4a5568; /* Default text color in inputs */
+            background-color: #ffffff; /* White background */
+            outline: none;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+            box-sizing: border-box; /* Ensure padding is included */
+            text-align: left; /* Default text alignment */
+        }
+
+        /* Textarea specific alignment */
+        .textarea-input {
+            min-height: 120px; /* Slightly adjusted min-height */
+            resize: vertical; /* Allow vertical resizing */
+        }
+
+        /* Focus states for inputs */
+        .text-input:focus, .select-input:focus, .textarea-input:focus {
+            border-color: #6366f1; /* Consistent indigo focus border */
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.25); /* Stronger, softer focus shadow */
+        }
+
+        /* Date/Time input container */
+        .date-time-input-container {
+            display: flex;
+            align-items: center;
+            border: 1px solid #cbd5e0;
+            border-radius: 0.65rem;
+            overflow: hidden;
+            background-color: #ffffff;
+        }
+
+        /* Date/Time input field */
+        .date-time-input {
+            flex-grow: 1;
+            padding: 0.9rem 1.25rem;
+            border: none; /* Remove individual border */
+            outline: none;
+            font-size: 1rem;
+            color: #4a5568;
+            background-color: transparent; /* Transparent background */
+            text-align: center; /* Center date/time text */
+        }
+
+        /* Input icon (for date/time) */
+        .input-icon {
+            padding: 0.9rem;
+            background-color: #edf2f7; /* Slightly darker background for icon */
+            border-left: 1px solid #cbd5e0;
+            color: #718096; /* Darker gray icon color */
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Radio group layout */
+        .radio-group {
+            display: flex;
+            justify-content: center;
+            gap: 3rem; /* Increased gap for better spacing */
+            margin-top: 1.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap; /* Allow wrapping on small screens */
+        }
+
+        /* Radio option styling */
+        .radio-option {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-size: 1rem;
+            color: #2d3748;
+        }
+
+        .radio-option input[type="radio"] {
+            margin-right: 0.6rem; /* Adjusted margin */
+            width: 1.35rem; /* Larger radio button */
+            height: 1.35rem;
+            accent-color: #3b82f6; /* Blue accent color for radio */
+            border: 2px solid #a0aec0; /* Custom border */
+            border-radius: 50%;
+            transition: all 0.2s ease;
+        }
+        .radio-option input[type="radio"]:checked {
+            border-color: #3b82f6; /* Blue border when checked */
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3); /* Blue shadow when checked */
+        }
+
+        /* Button styling (Generate and Load) */
+        .generate-button, .load-questions-button, .start-button, .get-started-button, .login-button {
+            width: 100%;
+            padding: 1.1rem 1.5rem; /* More vertical padding */
+            font-size: 1.15rem; /* Slightly larger font */
+            font-weight: 700; /* Bold */
+            border-radius: 0.75rem; /* More rounded buttons */
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+            box-shadow: 0 5px 15px rgba(34, 197, 94, 0.2); /* Deeper shadow for generate */
+        }
+        .generate-button {
+            background-color: #22c55e; /* Green button */
+            color: white;
+        }
+        .generate-button:hover:not(:disabled) { /* Add not(:disabled) */
+            background-color: #16a34a; /* Darker green on hover */
+            transform: translateY(-2px); /* Slight lift on hover */
+            box-shadow: 0 8px 20px rgba(34, 197, 94, 0.35);
+        }
+        .generate-button:disabled {
+            background-color: #a7f3d0; /* Lighter green when disabled */
+            cursor: not-allowed;
+            box-shadow: none;
+            transform: none;
+        }
+
+        .load-questions-button {
+            background-color: #3b82f6; /* Blue for load button */
+            color: white;
+            margin-top: 1.5rem; /* More space above load button */
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.2);
+        }
+        .load-questions-button:hover {
+            background-color: #2563eb; /* Darker blue on hover */
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.35);
+        }
+
+        .start-button {
+            background-color: #4f46e5; /* Indigo for main call to action */
+            color: white;
+            padding: 0.9rem 2rem;
+            max-width: 200px;
+            margin-top: 2rem;
+            box-shadow: 0 5px 15px rgba(79, 70, 229, 0.25);
+        }
+        .start-button:hover {
+            background-color: #4338ca;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(79, 70, 229, 0.4);
+        }
+
+        .back-to-home-button { /* Specific style for generator page's back button */
+            background-color: #6b7280; /* Grey button */
+            color: white;
+            padding: 0.9rem 1.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 0.75rem;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 1.5rem; /* Space below form */
+        }
+        .back-to-home-button:hover {
+            background-color: #4b5563;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+
+        .get-started-button { /* Applied to buttons like 'Get Started' in step-buttons */
+            background-color: #4f46e5;
+            color: white;
+            width: fit-content;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            box-shadow: none;
+        }
+        .get-started-button:hover {
+            background-color: #4338ca;
+            transform: translateY(-1px);
+        }
+
+        .login-button {
+            background-color: #4f46e5;
+            color: white;
+            margin-top: 1.5rem;
+            padding: 0.9rem 1.5rem;
+            box-shadow: 0 4px 10px rgba(79, 70, 229, 0.2);
+        }
+        .login-button:hover {
+            background-color: #4338ca;
+            transform: translateY(-1px);
+        }
+        .login-button:disabled {
+            background-color: #c7d2fe;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+
+        /* Form message styling */
+        .form-message {
+            color: #ef4444; /* Red for errors */
+            text-align: center;
+            margin-top: 0.75rem; /* Adjusted margin */
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .form-message.success {
+            color: #10b981; /* Green for success messages */
+        }
+
+        /* Select container for branch/subject */
+        .select-container {
+            display: flex;
+            gap: 1.5rem; /* Increased gap between selects */
+            margin-bottom: 1.75rem;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+        }
+        .select-container > div {
+            flex: 1; /* Each select takes equal width */
+            min-width: 250px; /* Minimum width for each select column before wrapping */
+        }
+
+        /* File input styling */
+        input[type="file"] {
+            border: 1px solid #cbd5e0;
+            border-radius: 0.65rem;
+            padding: 0.75rem 1rem;
+            background-color: #ffffff;
+            cursor: pointer;
+            font-size: 1rem;
+            color: #4a5568;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        input[type="file"]:hover {
+            border-color: #a0aec0;
+        }
+        input[type="file"]::file-selector-button {
+            background-color: #e0f2fe; /* Light blue for file button */
+            color: #1e40af; /* Dark blue text */
+            border: none;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            margin-right: 1rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        input[type="file"]::file-selector-button:hover {
+            background-color: #bfdbfe; /* Slightly darker blue on hover */
+        }
+
+        /* Loading Overlay Styles */
+        .loading-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            border-radius: 1rem; /* Match container border-radius */
+            flex-direction: column;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .loading-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 80%; /* Width of the loading content */
+            max-width: 400px;
+        }
+        .spinner {
+            border: 6px solid #f3f3f3; /* Light grey */
+            border-top: 6px solid #3498db; /* Blue */
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .progress-bar-container {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            height: 12px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+        .progress-bar-fill {
+            height: 100%;
+            background-color: #4CAF50; /* Green progress bar */
+            width: 0%;
+            border-radius: 10px;
+            transition: width 0.1s linear; /* Smooth fill */
+        }
+        /* Keyframe for actual progress animation over the full duration */
+        @keyframes fillProgress {
+            from { width: 0%; }
+            to { width: 100%; }
+        }
+        .loading-message {
+            font-size: 1.1rem;
+            color: #333;
+            font-weight: 500;
+            text-align: center;
+        }
+        .hidden {
+            display: none;
+        }
+
+        /* Home Page Specific Styles */
+        #home-page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 4rem; /* Padding for the bottom section */
+            height: 100%; /* Ensure it takes full height of app-container */
+            width: 100%;
+        }
+
+        .navbar {
+            width: 100%;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e2e8f0;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border-radius: 1rem 1rem 0 0; /* Match container top radius */
+        }
+        .navbar-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #4f46e5;
+        }
+        .navbar-links a {
+            margin-left: 1.5rem;
+            color: #4a5568;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .navbar-links a:hover {
+            color: #4f46e5;
+        }
+        .navbar-login-btn {
+            background-color: #4f46e5;
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: background-color 0.2s, transform 0.2s;
+        }
+        .navbar-login-btn:hover {
+            background-color: #4338ca;
+            transform: translateY(-1px);
+        }
+
+        .navbar-username-display { /* New style for username display */
+            color: #4f46e5;
+            font-weight: 600;
+            padding: 0.6rem 1.2rem;
+            border-radius: 0.5rem;
+            background-color: #e0e7ff; /* Light background for username */
+            margin-left: auto; /* Push to right */
+            font-size: 1rem;
+        }
+
+
+        .hero-section, .three-steps-section, .tutorials-section, .updates-section {
+            width: 100%;
+            padding: 4rem 2rem;
+            text-align: center;
+            box-sizing: border-box;
+        }
+        .hero-section {
+            background-color: #f0f2ff; /* Light blue/purple tint */
+            border-radius: 0 0 1rem 1rem; /* Match container top radius */
+        }
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #1a202c;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, #4f46e5, #8b5cf6); /* Gradient text */
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: #4a5568;
+            max-width: 600px;
+            margin: 0 auto 2rem auto;
+        }
+
+        .three-steps-section, .tutorials-section, .updates-section {
+             padding-top: 2rem;
+             padding-bottom: 4rem;
+        }
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 1rem;
+        }
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #4a5568;
+            margin-bottom: 3rem;
+        }
+        .steps-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+        .step-item {
+            background-color: #f0f2ff; /* Light background for steps */
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            width: 100%;
+            max-width: 300px;
+            text-align: left;
+            position: relative;
+            padding-top: 3.5rem; /* Space for number circle */
+            border: 1px solid #e0e7ff;
+        }
+        .step-number {
+            position: absolute;
+            top: 1.5rem;
+            left: 1.5rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #4f46e5; /* Primary color for numbers */
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            box-shadow: 0 2px 8px rgba(79, 70, 229, 0.3);
+        }
+        .step-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+        .step-description {
+            font-size: 0.95rem;
+            color: #6b7280;
+        }
+        .step-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 3rem;
+            justify-content: center;
+        }
+        .app-preview-image {
+            max-width: 80%;
+            height: auto;
+            margin: 3rem auto;
+            border-radius: 1rem;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            border: 1px solid #e2e8f0;
+        }
+
+        .tutorials-content, .updates-content-section {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left; /* Default to left for structured content */
+        }
+        .tutorials-content h3, .updates-content-section h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .tutorials-content p, .updates-content-section p, .updates-content-section ul {
+            font-size: 1rem;
+            color: #4a5568;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        .tutorials-content ol, .updates-content-section ul {
+            padding-left: 1.5rem;
+            list-style-type: decimal;
+        }
+        .updates-content-section li {
+            margin-bottom: 0.5rem;
+        }
+
+
+        /* Login Modal Styles (reused for other modals) */
+        .login-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6); /* Darker overlay */
+            display: flex; /* Always flex when not hidden */
+            justify-content: center;
+            align-items: center;
+            z-index: 20; /* Above loading overlay */
+        }
+
+        .login-modal-content {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            width: 90%;
+            max-width: 450px;
+            position: relative;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        .login-modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #6b7280;
+        }
+        .login-modal-close:hover {
+            color: #333;
+        }
+        .login-modal-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 2rem;
+        }
+        .login-modal-input-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        .login-modal-input {
+            width: 100%;
+            padding: 0.9rem 1.25rem;
+            border: 1px solid #cbd5e0;
+            border-radius: 0.65rem;
+            font-size: 1rem;
+            color: #4a5568;
+            outline: none;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .login-modal-input:focus {
+            border-color: #6366f1;
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.25);
+        }
+        .login-modal-message {
+            color: #ef4444;
+            font-size: 0.9rem;
+            margin-top: -1rem;
+            margin-bottom: 1rem;
+        }
+
+        /* New styles for Forgot Password/Create Account links */
+        .forgot-password-link {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #4f46e5; /* Indigo color */
+            margin-top: 0.5rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: color 0.2s ease, text-decoration 0.2s ease;
+        }
+        .forgot-password-link:hover {
+            color: #4338ca;
+            text-decoration: underline;
+        }
+
+        /* WhatsApp Link specific styling */
+        .whatsapp-link {
+            display: inline-flex; /* Use flex to align icon and text */
+            align-items: center; /* Center vertically */
+            background-color: #25d366; /* WhatsApp green */
+            color: white;
+            padding: 0.75rem 1.25rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            margin-top: 1.5rem;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+        }
+
+        .whatsapp-link:hover {
+            background-color: #1da851; /* Darker green on hover */
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(37, 211, 102, 0.4);
+        }
+
+        .whatsapp-link svg {
+            margin-right: 0.75rem; /* Space between icon and text */
+            width: 1.25rem; /* Icon size */
+            height: 1.25rem;
+            fill: currentColor; /* Use current text color for SVG */
+        }
+        .info-message {
+            font-size: 1rem;
+            color: #4a5568;
+            line-height: 1.5;
+            margin-top: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .whatsapp-phone-number {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #25d366; /* WhatsApp green */
+            margin-top: 0.5rem;
+        }
+
+
+        /* Responsive adjustments */
+        @media (max-width: 1024px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem; /* Less padding on small screens */
+            }
+            #app-container {
+                border-radius: 0.75rem;
+            }
+            .container-box {
+                padding: 1.5rem; /* Less padding inside the box */
+            }
+            .h1-title {
+                font-size: 2rem; /* Smaller heading on small screens */
+                margin-bottom: 1.5rem;
+            }
+            .input-group {
+                margin-bottom: 1.25rem;
+            }
+            .label {
+                font-size: 0.9rem;
+                margin-bottom: 0.5rem;
+            }
+            .text-input, .select-input, .textarea-input, .date-time-input, .input-icon {
+                padding: 0.75rem 1rem; /* Smaller padding for inputs */
+                font-size: 0.95rem;
+            }
+            .radio-group {
+                gap: 1.5rem; /* Smaller gap in radio group */
+                margin-bottom: 1.5rem;
+            }
+            .generate-button, .load-questions-button, .start-button, .get-started-button, .login-button {
+                padding: 0.9rem 1rem; /* Smaller button padding */
+                font-size: 1rem;
+                border-radius: 0.65rem;
+            }
+            .select-container {
+                flex-direction: column; /* Stack select inputs vertically */
+                gap: 1.25rem; /* Adjust gap for stacked layout */
+            }
+            .select-container > div {
+                min-width: unset; /* Remove min-width when stacked */
+            }
+            .loading-content {
+                width: 95%;
+            }
+
+            /* Home Page Responsive Adjustments */
+            .navbar {
+                padding: 0.8rem 1rem;
+            }
+            .navbar-logo {
+                font-size: 1.5rem;
+            }
+            .navbar-links {
+                display: none; /* Hide nav links on small screens */
+            }
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            .hero-section {
+                padding: 3rem 1rem;
+            }
+            .steps-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+            .step-item {
+                max-width: 90%;
+            }
+            .step-buttons {
+                flex-direction: column;
+                gap: 0.8rem;
+                align-items: center;
+            }
+            .get-started-button {
+                width: 80%;
+            }
+            .app-preview-image {
+                max-width: 95%;
+            }
+            .login-modal-content {
+                padding: 1.5rem;
+            }
+            .login-modal-title {
+                font-size: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+            .login-modal-input {
+                padding: 0.75rem 1rem;
+            }
+            .tutorials-content p, .updates-content-section p, .updates-content-section ul { /* Adjusted font size */
+                font-size: 0.9rem;
+            }
+            .tutorials-content h3, .updates-content-section h3 {
+                font-size: 1.2rem;
+            }
+        }
+    
